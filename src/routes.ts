@@ -4,6 +4,7 @@ import {
     IRequestWithUser,
     IRequestWithLanguage
 } from '@lumieducation/h5p-express';
+import cors from 'cors';
 
 /**
  * @param h5pEditor
@@ -18,6 +19,7 @@ export default function (
     languageOverride: string | 'auto' = 'auto'
 ): express.Router {
     const router = express.Router();
+    router.use(cors());
 
     router.get(`/:contentId/play`, async (req: IRequestWithUser, res) => {
         try {
@@ -66,7 +68,7 @@ export default function (
         }
     );
 
-    router.post('/', async (req: IRequestWithUser, res) => {
+    router.post('/',  async (req: IRequestWithUser, res) => {
         if (
             !req.body.params ||
             !req.body.params.params ||
