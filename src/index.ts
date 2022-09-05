@@ -156,13 +156,14 @@ const start = async (): Promise<void> => {
     // We now set up the Express server in the usual fashion.
     const server = express();
 
-    server.use(cors());
     server.use(bodyParser.json({ limit: '500mb' }));
     server.use(
         bodyParser.urlencoded({
             extended: true
         })
     );
+    server.use(cors());
+    
 
     // Configure file uploads
     server.use(
