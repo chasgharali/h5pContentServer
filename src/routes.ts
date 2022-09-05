@@ -33,7 +33,7 @@ export default function (
                     ? req.language ?? 'en'
                     : languageOverride
             );
-            const result = JSON.parse(JSON.stringify(content).split('/h5p/').join('http://34.172.166.225:8080/h5p/'));
+            const result = JSON.parse(JSON.stringify(content).split('/h5p/').join('https://h5p-server.tk/h5p/'));
         
             console.log(result);
             
@@ -67,7 +67,7 @@ export default function (
             )) as H5P.IEditorModel;
             
 
-            const editorModelwithURL = JSON.parse(JSON.stringify(editorModel).split('/h5p/').join('http://34.172.166.225:8080/h5p/'));
+            const editorModelwithURL = JSON.parse(JSON.stringify(editorModel).split('/h5p/').join('https://h5p-server.tk/h5p/'));
 
             if (!req.params.contentId || req.params.contentId === 'undefined') {
                 res.send(editorModelwithURL);
@@ -76,7 +76,7 @@ export default function (
                     req.params.contentId
                 );
 
-                const contentwithURL = JSON.parse(JSON.stringify(content).split('/h5p/').join('http://34.172.166.225:8080/h5p/'));
+                const contentwithURL = JSON.parse(JSON.stringify(content).split('/h5p/').join('https://h5p-server.tk/h5p/'));
 
 
                 res.send({
