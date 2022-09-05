@@ -20,6 +20,7 @@ import * as H5P from '@lumieducation/h5p-server';
 import restExpressRoutes from './routes';
 import User from './User';
 import createH5PEditor from './createH5PEditor';
+import cors from 'cors';
 import { displayIps, clearTempFiles } from './utils';
 
 let tmpDir: DirectoryResult;
@@ -155,6 +156,7 @@ const start = async (): Promise<void> => {
     // We now set up the Express server in the usual fashion.
     const server = express();
 
+    server.use(cors());
     server.use(bodyParser.json({ limit: '500mb' }));
     server.use(
         bodyParser.urlencoded({
