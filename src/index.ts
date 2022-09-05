@@ -164,6 +164,18 @@ const start = async (): Promise<void> => {
     );
     server.use(cors());
     
+    server.use((req, res, next) => {
+        console.log('Time:', Date.now());
+        console.log('=================');
+        const oldJson = res.json;
+        res.json = (body) => {
+          res.locals.body = JSON.parse(JSON.stringify(body).split('/h5p/').join('https://h5p-server.tk/h5p/')); ;
+          console.log(res.locals.body);
+      
+          return oldJson.call(res, res.locals.body);
+        };
+        next()
+      })
 
     // Configure file uploads
     server.use(

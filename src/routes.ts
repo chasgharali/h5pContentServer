@@ -33,12 +33,11 @@ export default function (
                     ? req.language ?? 'en'
                     : languageOverride
             );
-            const result = JSON.parse(JSON.stringify(content).split('/h5p/').join('https://h5p-server.tk/h5p/'));
-        
-            console.log(result);
+           // const result = JSON.parse(JSON.stringify(content).split('/h5p/').join('https://h5p-server.tk/h5p/'));
+         //console.log(result);
             
             
-            res.send(result);
+            res.send(content);
             res.status(200).end();
         } catch (error) {
             res.status(500).end(error.message);
@@ -67,23 +66,23 @@ export default function (
             )) as H5P.IEditorModel;
             
 
-            const editorModelwithURL = JSON.parse(JSON.stringify(editorModel).split('/h5p/').join('https://h5p-server.tk/h5p/'));
+            //const editorModelwithURL = JSON.parse(JSON.stringify(editorModel).split('/h5p/').join('https://h5p-server.tk/h5p/'));
 
             if (!req.params.contentId || req.params.contentId === 'undefined') {
-                res.send(editorModelwithURL);
+                res.send(editorModel);
             } else {
                 const content = await h5pEditor.getContent(
                     req.params.contentId
                 );
 
-                const contentwithURL = JSON.parse(JSON.stringify(content).split('/h5p/').join('https://h5p-server.tk/h5p/'));
+                //const contentwithURL = JSON.parse(JSON.stringify(content).split('/h5p/').join('https://h5p-server.tk/h5p/'));
 
 
                 res.send({
-                    ...editorModelwithURL,
-                    library: contentwithURL.library,
-                    metadata: contentwithURL.params.metadata,
-                    params: contentwithURL.params.params
+                    ...editorModel,
+                    library: content.library,
+                    metadata: content.params.metadata,
+                    params: content.params.params
                 });
             }
             res.status(200).end();
