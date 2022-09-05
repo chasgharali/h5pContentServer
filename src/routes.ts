@@ -50,6 +50,12 @@ export default function (
         async (req: IRequestWithLanguage & { user: H5P.IUser }, res) => {
             // This route merges the render and the /ajax/params routes to avoid a
             // second request.
+
+
+            console.log("getting content Edit/Add request: ", req.params.contentId);
+            console.log(req.user);
+
+
             const editorModel = (await h5pEditor.render(
                 req.params.contentId === 'undefined'
                     ? undefined
@@ -59,17 +65,25 @@ export default function (
                     : languageOverride,
                 req.user
             )) as H5P.IEditorModel;
+            
+
+            const editorModelwithURL = JSON.parse(JSON.stringify(editorModel).split('/h5p/').join('http://34.172.166.225:8080/h5p/'));
+
             if (!req.params.contentId || req.params.contentId === 'undefined') {
-                res.send(editorModel);
+                res.send(editorModelwithURL);
             } else {
                 const content = await h5pEditor.getContent(
                     req.params.contentId
                 );
+
+                const contentwithURL = JSON.parse(JSON.stringify(content).split('/h5p/').join('http://34.172.166.225:8080/h5p/'));
+
+
                 res.send({
-                    ...editorModel,
-                    library: content.library,
-                    metadata: content.params.metadata,
-                    params: content.params.params
+                    ...editorModelwithURL,
+                    library: contentwithURL.library,
+                    metadata: contentwithURL.params.metadata,
+                    params: contentwithURL.params.params
                 });
             }
             res.status(200).end();
