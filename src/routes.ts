@@ -37,7 +37,7 @@ export default function (
         
             console.log(result);
             
-            res.send(result);
+            res.send(content);
             res.status(200).end();
         } catch (error) {
             res.status(500).end(error.message);
