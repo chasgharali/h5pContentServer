@@ -23,6 +23,9 @@ export default function (
 
     router.get(`/:contentId/play`, async (req: IRequestWithUser, res) => {
         try {
+            console.log("getting content Play request: ", req.params.contentId);
+            console.log(req.user);
+
             const content = await h5pPlayer.render(
                 req.params.contentId,
                 req.user,
@@ -31,6 +34,7 @@ export default function (
                     : languageOverride
             );
             res.send(content);
+            console.log(content);
             res.status(200).end();
         } catch (error) {
             res.status(500).end(error.message);
