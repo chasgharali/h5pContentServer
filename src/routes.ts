@@ -33,11 +33,11 @@ export default function (
                     ? req.language ?? 'en'
                     : languageOverride
             );
-            const res = JSON.parse(JSON.stringify(content).split('/h5p/').join('http://34.172.166.225:8080/h5p/'));
+            const result = JSON.parse(JSON.stringify(content).split('/h5p/').join('http://34.172.166.225:8080/h5p/'));
         
-            console.log(res);
+            console.log(result);
             
-            res.send(res);
+            res.send(result);
             res.status(200).end();
         } catch (error) {
             res.status(500).end(error.message);
