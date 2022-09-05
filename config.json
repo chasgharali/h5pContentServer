@@ -1,6 +1,6 @@
 {
     "fetchingDisabled": 0,
-    "baseUrl": "/h5p",
+    "baseUrl": "http://34.172.166.225:8080/h5p",
     "uuid": "8de62c47-f335-42f6-909d-2d8f4b7fb7f5",
     "siteType": "internet",
     "sendUsageStatistics": false,
