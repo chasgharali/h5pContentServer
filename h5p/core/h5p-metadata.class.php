@@ -1,5 +1,8 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
 /**
+ * 
  * Utility class for handling metadata
  */
 abstract class H5PMetadata {

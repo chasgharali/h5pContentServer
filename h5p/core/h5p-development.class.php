@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 
 /**
  * This is a data layer which uses the file system so it isn't specific to any framework.
