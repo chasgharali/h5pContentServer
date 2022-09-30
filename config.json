@@ -7,7 +7,7 @@
     "hubRegistrationEndpoint": "https://api.h5p.org/v1/sites",
     "hubContentTypesEndpoint": "https://api.h5p.org/v1/content-types/",
     "contentTypeCacheRefreshInterval": 86400000,
-    "maxTotalSize":99999999999,
+    "maxTotalSize":999999999999,
     "enableLrsContentTypes": true,
     "editorAddons": {
         "H5P.CoursePresentation": ["H5P.MathDisplay"],
