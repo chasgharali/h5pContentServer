@@ -177,6 +177,8 @@ const start = async (): Promise<void> => {
         next()
       })
 
+      console.log("File Limit:",  h5pEditor.config.maxTotalSize );
+      
     // Configure file uploads
     server.use(
         fileUpload({

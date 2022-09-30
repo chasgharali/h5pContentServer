@@ -28,6 +28,7 @@ H5PEditor.FileUploader = (function ($, EventDispatcher) {
       // Submit the form
       var request = new XMLHttpRequest();
       request.upload.onprogress = function (e) {
+        console.log("H5P:: TOTAL FILE SIZE:",e.total);
         if (e.lengthComputable) {
           self.trigger('uploadProgress', (e.loaded / e.total));
         }

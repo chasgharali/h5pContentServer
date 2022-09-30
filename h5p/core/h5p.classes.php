@@ -882,11 +882,14 @@ class H5PValidator {
       }
     }
 
+    //// Commenting Check
+    /*
     if (!empty($this->h5pC->maxTotalSize) && $totalSize > $this->h5pC->maxTotalSize) {
       // Error total size of the zip is too large
       $this->h5pF->setErrorMessage($this->h5pF->t('The total size of the unpacked files exceeds the maximum size allowed. (%used > %max)', array('%used' => ($totalSize / 1048576) . ' MB', '%max' => ($this->h5pC->maxTotalSize / 1048576) . ' MB')), 'total-size-too-large');
       $valid = FALSE;
     }
+    */
 
     if ($skipContent === FALSE) {
       // Not skipping content, require two valid JSON files from the package
