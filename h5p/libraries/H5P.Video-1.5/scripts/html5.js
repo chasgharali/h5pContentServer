@@ -21,8 +21,11 @@ H5P.VideoHtml5 = (function ($) {
      */
     const getCrossOriginPath = function (source) {
       let path = H5P.getPath(source.path, self.contentId);
+      console.log("getCrossOriginPath::",path )
+     
       if (video.crossOrigin !== null && H5P.addQueryParameter && H5PIntegration.crossoriginCacheBuster) {
         path = H5P.addQueryParameter(path, H5PIntegration.crossoriginCacheBuster);
+        console.log("getCrossOriginPath:: path after adding query param",path )
       }
       return path
     };
