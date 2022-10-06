@@ -29,6 +29,7 @@ H5PEditor.FileUploader = (function ($, EventDispatcher) {
       var request = new XMLHttpRequest();
       request.upload.onprogress = function (e) {
         console.log("H5P:: TOTAL FILE SIZE:",e.total);
+        console.log("H5P:: LOADED FILE SIZE:",e.loaded);
         if (e.lengthComputable) {
           self.trigger('uploadProgress', (e.loaded / e.total));
         }
@@ -45,6 +46,7 @@ H5PEditor.FileUploader = (function ($, EventDispatcher) {
         }
         catch (err) {
           H5P.error(err);
+          alert('file is too large to upload, please weblink instead which more optimize to for h5p content');
           // Add error data to event object
           uploadComplete.error = H5PEditor.t('core', 'fileToLarge');
         }
